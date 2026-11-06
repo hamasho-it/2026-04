@@ -1,12 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>準備中</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus-Fit - ホーム画面</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body style="font-family:sans-serif;text-align:center;margin-top:30vh">
-<h1>準備中</h1>
-<p>このページは、チームのアプリを公開すると入れ替わります。</p>
+<body>
+    <div class="app-container">
+        <div class="header" style="justify-content: center;">
+            <h1 style="font-size: 24px;">Bus-Fit</h1>
+        </div>
+
+        <div class="content">
+            <div class="form-group">
+                <label for="favorite-select">お気に入り</label>
+                <select id="favorite-select" onchange="if(this.value) window.location.href=this.value;">
+                    <option value="">お気に入り路線を選択</option>
+                    <option value="./route_select.html">サンプル南北線</option>
+                    <option value="./route_select.html">サンプル東西線</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="route-select">路線選択</label>
+                <select id="route-select" onchange="if(this.value) window.location.href=this.value;">
+                    <option value="">路線選択</option>
+                    <option value="./route_select.html">全路線一覧へ</option>
+                </select>
+            </div>
+
+            <a href="./route_select.html" class="btn">お気に入り路線選択 ∨</a>
+            <a href="./route_select.html" class="btn">路線選択 ∨</a>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px dashed #ccc;">
+                <p class="sub-text" style="font-weight: bold; margin-bottom: 8px;">バス座席予約</p>
+                <a href="./reservation_form.html" class="btn btn-primary btn-large">予約画面へ ↴</a>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
 </body>
 </html>

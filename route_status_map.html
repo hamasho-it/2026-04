@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus-Fit - 路線図 (遅延状況)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <a href="./route_select.html">&lt; 戻る</a>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title">路線図</h2>
+
+            <a href="./bus_stop_select.html" style="text-decoration: none; display: block;">
+                <div class="image-box">
+                    <img src="./images/route_map.png" alt="路線図" onerror="this.style.display='none'; this.parentNode.insertAdjacentHTML('beforeend', '<p>灰色のプレースホルダー<br>(路線図イメージ)</p>');">
+                </div>
+            </a>
+
+            <p class="timestamp">(10 : 05現在)</p>
+
+            <div style="border: 1px solid #ccc; padding: 10px; border-radius: 6px; background: #fafafa; font-size: 12px; margin-top: 10px;">
+                <p><strong>凡例:</strong></p>
+                <p>― 最大〜分遅れ (主要路線)</p>
+                <p>― 平常運行</p>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
