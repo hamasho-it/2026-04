@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus-Fit - バス停選択</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <a href="./route_status_name.html">&lt; 戻る</a>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title">バス停選択</h2>
+
+            <div class="form-group">
+                <input type="text" id="search-bus-stop" placeholder="バス停を検索">
+            </div>
+
+            <p class="sub-text" style="text-align: left; font-size: 12px; margin-top: 4px;">バス停一覧</p>
+
+            <div class="list-group" id="bus-stop-list">
+                <div class="list-item bus-stop-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                    <span style="font-weight: bold; font-size: 16px;">サンプル浜田駅</span>
+                    <div style="display: flex; gap: 6px; width: 100%;">
+                        <a href="./bus_position_delay.html" class="btn" style="padding: 6px; font-size: 11px;">走行位置(遅延あり)</a>
+                        <a href="./bus_position_no_delay.html" class="btn" style="padding: 6px; font-size: 11px;">走行位置(遅延なし)</a>
+                        <a href="./timetable.html" class="btn btn-primary" style="padding: 6px; font-size: 11px;">時刻表</a>
+                    </div>
+                </div>
+
+                <a href="./bus_position_delay.html" class="list-item bus-stop-item">
+                    <span>サンプル琵琶町</span>
+                </a>
+                <a href="./bus_position_delay.html" class="list-item bus-stop-item">
+                    <span>サンプル田町</span>
+                </a>
+                <a href="./bus_position_delay.html" class="list-item bus-stop-item">
+                    <span>サンプル市役所前</span>
+                </a>
+                <a href="./bus_position_delay.html" class="list-item bus-stop-item">
+                    <span>サンプル中央町</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <a href="./index.html" class="btn">ホーム画面に戻る</a>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

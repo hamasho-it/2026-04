@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus-Fit - バス走行位置(遅延あり)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <a href="./bus_stop_select.html">&lt; 戻る</a>
+            <span style="font-weight: bold; font-size: 14px;">サンプル南北線</span>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title" style="font-size: 18px;">バス走行位置</h2>
+
+            <a href="./reminder_setting.html" style="text-decoration: none; color: inherit; display: block;">
+                <div class="route-diagram">
+                    <div class="bus-callout">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <img src="./images/bus_icon.png" alt="バスアイコン" style="width: 24px; height: 24px;" onerror="this.style.display='none';">
+                            <span>バス</span>
+                        </div>
+                        <p style="margin-top: 4px;">このバスの遅延状況<br><span style="text-decoration: underline;">(5分遅れ)</span></p>
+                    </div>
+
+                    <div style="padding-left: 20px;">
+                        <div class="station-node">
+                            <div class="station-dot"></div>
+                            <span>サンプル浜田駅</span>
+                        </div>
+                        <div class="station-line"></div>
+                        <div class="station-node">
+                            <div class="station-dot"></div>
+                            <span>サンプル琵琶町</span>
+                        </div>
+                        <div class="station-line"></div>
+                        <div class="station-node">
+                            <div class="station-dot"></div>
+                            <span>サンプル田町</span>
+                        </div>
+                        <div class="station-line"></div>
+                        <div class="station-node">
+                            <div class="station-dot"></div>
+                            <span>サンプル市役所前</span>
+                        </div>
+                    </div>
+
+                    <div class="image-box" style="margin-top: 12px; min-height: 100px;">
+                        <img src="./images/bus_route_delay.png" alt="走行ルート図" onerror="this.style.display='none'; this.parentNode.insertAdjacentHTML('beforeend', '<p>灰色のプレースホルダー<br>(マップ画像)</p>');">
+                    </div>
+                </div>
+            </a>
+            <p class="sub-text" style="font-size: 11px;">※タップするとリマインダー設定へ移動します</p>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

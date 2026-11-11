@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus-Fit - リマインダー設定</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <a href="./bus_position_delay.html">&lt; 戻る</a>
+            <a href="./index.html">ホーム画面に戻る &gt;</a>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title">リマインダー設定</h2>
+
+            <form id="reminder-form" style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="toggle-container" style="border-bottom: 1px solid #ccc;">
+                    <span style="font-weight: bold;">リマインダー</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="stop-input">バス停名</label>
+                    <input type="text" id="stop-input" value="サンプル浜田駅" placeholder="バス停名を入力">
+                </div>
+
+                <div class="form-group">
+                    <label for="minutes-input">通知タイミング</label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span>バス到着</span>
+                        <input type="number" id="minutes-input" value="10" min="1" max="60" style="width: 80px; text-align: center;">
+                        <span>分前に設定</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <a href="./transfer_info.html" class="btn" style="margin-bottom: 12px;">乗換案内</a>
+                    <button type="submit" class="btn btn-primary btn-large">決定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
