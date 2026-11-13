@@ -1,65 +1,130 @@
 /* Bus-Fit 共通スタイルシート (style.css) */
+
+/* カラー定義（変数） */
+:root {
+    --color-main: #0277BD;         /* メインの色（見出し・上の帯） */
+    --color-accent: #F59E0B;       /* 強調の色（主なボタン） */
+    --color-bg: #F8FAFC;           /* 背景の色 */
+    --color-text: #333333;         /* 文字の色 */
+
+    /* 補助カラー（読みやすさ・操作性向上のため） */
+    --color-white: #FFFFFF;
+    --color-main-dark: #01579B;    /* メイン色のホバー・押下時 */
+    --color-main-light: #E1F5FE;   /* 淡い青（通知・現在地表示の背景） */
+    --color-accent-hover: #D97706; /* 強調色のホバー・押下時 */
+    --color-text-sub: #555555;     /* 補足テキスト */
+    --color-border: #CBD5E1;       /* 柔らかい境界線 */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+html {
+    font-size: 16px;
 }
 
 body {
-    background-color: #f5f5f5;
-    color: #222222;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.6;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 10px;
+    padding: 12px;
 }
 
+/* アプリ全体枠（PCではスマホ幅で中央表示） */
 .app-container {
     width: 100%;
-    max-width: 400px;
-    background-color: #ffffff;
-    border: 2px solid #333333;
-    border-radius: 12px;
+    max-width: 440px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
     min-height: 650px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(2, 119, 189, 0.08);
     overflow: hidden;
     position: relative;
 }
 
-/* ヘッダー */
+/* スマートフォン実機幅では余白・枠線をなくして画面いっぱいに表示 */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    .app-container {
+        max-width: 100%;
+        border: none;
+        border-radius: 0;
+        min-height: 100dvh;
+        box-shadow: none;
+    }
+}
+
+/* アイコン共通設定（Material Symbols・絵文字の縦位置調整） */
+.material-symbols-outlined,
+.material-symbols-rounded {
+    font-size: 22px;
+    line-height: 1;
+    vertical-align: middle;
+    user-select: none;
+}
+
+/* ヘッダー（上の帯） */
 .header {
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ccc;
-    padding: 12px 16px;
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: 10px 16px;
+    min-height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
-.header a, .nav-btn {
-    color: #333333;
+.header a,
+.nav-btn {
+    color: var(--color-white);
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     background: none;
     border: none;
     cursor: pointer;
+    min-height: 44px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: background-color 0.2s;
 }
 
-.header a:hover, .nav-btn:hover {
-    text-decoration: underline;
+.header a:hover,
+.nav-btn:hover,
+.header a:active,
+.nav-btn:active {
+    background-color: rgba(255, 255, 255, 0.18);
+    text-decoration: none;
 }
 
+/* 見出し */
 .page-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
-    margin: 16px 0 8px 0;
-    color: #111111;
+    margin: 8px 0 4px 0;
+    color: var(--color-main);
+    line-height: 1.4;
 }
 
 /* メインコンテンツエリア */
@@ -72,14 +137,14 @@ body {
 }
 
 .sub-text {
-    font-size: 14px;
-    color: #555555;
+    font-size: 16px;
+    color: var(--color-text);
     text-align: center;
 }
 
 .timestamp {
-    font-size: 12px;
-    color: #666666;
+    font-size: 16px;
+    color: var(--color-text-sub);
     text-align: right;
     margin-top: 4px;
 }
@@ -88,58 +153,93 @@ body {
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 label {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-select, input[type="text"], input[type="number"] {
+select,
+input[type="text"],
+input[type="number"] {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #888888;
-    border-radius: 6px;
-    background-color: #fafafa;
-    font-size: 15px;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font-size: 16px; /* iOSでの入力時自動ズームを防止 */
     appearance: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* ボタン */
+select {
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230277BD' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+}
+
+select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-main);
+    box-shadow: 0 0 0 3px rgba(2, 119, 189, 0.15);
+}
+
+/* ボタン（角丸・高さ44px以上・アイコン対応） */
 .btn {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
-    padding: 14px;
-    background-color: #e0e0e0;
-    color: #111111;
-    border: 1px solid #777777;
-    border-radius: 8px;
+    min-height: 48px;
+    padding: 12px 20px;
+    background-color: var(--color-white);
+    color: var(--color-main);
+    border: 2px solid var(--color-main);
+    border-radius: 14px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
+    line-height: 1.4;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
-.btn:hover {
-    background-color: #cccccc;
+.btn:hover,
+.btn:active {
+    background-color: var(--color-main-light);
 }
 
+/* 主なボタン（強調の色：#F59E0B） */
 .btn-primary {
-    background-color: #333333;
-    color: #ffffff;
-    border: 1px solid #111111;
+    background-color: var(--color-accent);
+    color: var(--color-text); /* 白文字よりもコントラストが高く読みやすい組み合わせ */
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 3px 8px rgba(245, 158, 11, 0.28);
 }
 
-.btn-primary:hover {
-    background-color: #555555;
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
 }
 
 .btn-large {
-    padding: 18px;
+    min-height: 56px;
+    padding: 14px 24px;
     font-size: 18px;
 }
 
@@ -147,104 +247,133 @@ select, input[type="text"], input[type="number"] {
 .list-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .list-item {
-    padding: 14px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    background-color: #fdfdfd;
+    min-height: 52px;
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background-color: var(--color-white);
     text-decoration: none;
-    color: #222222;
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
-.list-item:hover {
-    background-color: #f0f0f0;
+.list-item:hover,
+.list-item:active {
+    background-color: var(--color-main-light);
+    border-color: var(--color-main);
 }
 
 /* 画像プレースホルダー */
 .image-box {
     width: 100%;
-    background-color: #e0e0e0;
-    border: 1px dashed #888888;
-    border-radius: 8px;
+    background-color: var(--color-white);
+    border: 2px dashed var(--color-border);
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 14px;
     text-align: center;
     min-height: 180px;
+    font-size: 16px;
+    color: var(--color-text-sub);
 }
 
 .image-box img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 /* バス運行ルート表示 */
 .route-diagram {
-    border: 1px solid #aaaaaa;
-    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
     padding: 16px;
-    background-color: #fafafa;
+    background-color: var(--color-white);
     position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .bus-callout {
-    background-color: #ffffff;
-    border: 2px solid #333333;
-    border-radius: 12px;
-    padding: 10px;
-    margin-bottom: 12px;
+    background-color: var(--color-main-light);
+    border: 2px solid var(--color-main);
+    color: var(--color-text);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
     text-align: center;
     font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(2, 119, 189, 0.12);
 }
 
 .station-node {
     display: flex;
     align-items: center;
-    margin: 16px 0;
+    margin: 14px 0;
     font-weight: bold;
+    font-size: 16px;
+    color: var(--color-text);
 }
 
 .station-dot {
-    width: 14px;
-    height: 14px;
-    background-color: #333333;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-main);
+    border: 3px solid var(--color-main-light);
     border-radius: 50%;
     margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .station-line {
-    width: 2px;
-    height: 24px;
-    background-color: #888888;
-    margin-left: 6px;
+    width: 3px;
+    height: 26px;
+    background-color: var(--color-main);
+    opacity: 0.45;
+    margin-left: 6.5px;
 }
 
 /* 時刻表テーブル */
 .timetable-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 8px;
+    background-color: var(--color-white);
+    font-size: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-.timetable-table th, .timetable-table td {
-    border: 1px solid #888888;
-    padding: 10px;
+.timetable-table th,
+.timetable-table td {
+    border: 1px solid var(--color-border);
+    padding: 12px 14px;
     text-align: left;
 }
 
 .timetable-table th {
-    background-color: #e0e0e0;
+    background-color: var(--color-main);
+    color: var(--color-white);
+    font-weight: bold;
+}
+
+.timetable-table td {
+    color: var(--color-text);
 }
 
 /* スイッチ (トグル) */
@@ -252,14 +381,18 @@ select, input[type="text"], input[type="number"] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    gap: 12px;
+    min-height: 48px;
+    padding: 8px 0;
+    font-size: 16px;
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 26px;
+    width: 54px;
+    height: 30px;
+    flex-shrink: 0;
 }
 
 .switch input {
@@ -271,26 +404,30 @@ select, input[type="text"], input[type="number"] {
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-border);
+    transition: 0.3s;
     border-radius: 34px;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 22px;
+    width: 22px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
-    transition: .4s;
+    background-color: var(--color-white);
+    transition: 0.3s;
     border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .slider {
-    background-color: #333333;
+    background-color: var(--color-main);
 }
 
 input:checked + .slider:before {
@@ -299,10 +436,12 @@ input:checked + .slider:before {
 
 /* メッセージ・通知 */
 .alert-box {
-    padding: 12px;
-    background-color: #e8e8e8;
-    border: 1px solid #999;
-    border-radius: 6px;
+    padding: 14px 16px;
+    background-color: var(--color-main-light);
+    border: 1px solid rgba(2, 119, 189, 0.3);
+    border-left: 5px solid var(--color-main);
+    border-radius: 12px;
     margin-bottom: 12px;
-    font-size: 14px;
+    font-size: 16px;
+    color: var(--color-text);
 }
